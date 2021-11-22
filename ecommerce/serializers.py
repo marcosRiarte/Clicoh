@@ -33,10 +33,7 @@ class OrderSerializer(serializers.ModelSerializer):
             self.update_stock(data)
 
         if self.context['request'].method == 'PUT':
-
-            order_id = self.context['request'].get_full_path().split("/")[1]
             self.rebuild_stock(data)
-
 
         return data
 
@@ -49,16 +46,16 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         details_data = validated_data.pop('details')
-        print("detalles", details_data)
-        order= instance
+        order = instance
 
         for detail_data in details_data:
-            detail =OrderDetail.objects.filter(order=instance, product_id=detail_data['product'])
+            detail = OrderDetail.objects.filter(order=instance, product_id=detail_data['product'])
             if detail.exists():
-               # OrderDetail.objects.filter(order=instance, product_id=detail_data['product']).update(cuantity=detail_data['cuantity'])
                 detail.update(cuantity=detail_data['cuantity'])
             else:
-               OrderDetail.objects.create(order=instance, product_id=detail_data['product'], cuantity=detail_data['cuantity'])
+                product_id = detail_data['product'].id
+                OrderDetail.objects.create(order=instance, product_id=product_id, cuantity=detail_data['cuantity'])
+                Product.objects.filter(id=product_id).update(stock=Product.objects.get(id=product_id).stock - detail_data['cuantity'])
 
         return order
 
@@ -75,14 +72,10 @@ class OrderSerializer(serializers.ModelSerializer):
         total_price = self.get_total(obj)
         dolar_price = get_usd()
         order_amount_total = total_price / Decimal(dolar_price.replace(',', '.'))
-
         return order_amount_total.quantize(Decimal('.01'))
 
-
-    def stock_non_zero(self,data):
-
+    def stock_non_zero(self, data):
         list_to_items = data['details']
-        # Valido si hay items (lista Vacia)
         for item in list_to_items:
             product_id = item['product'].id
             stock_actual = Product.objects.get(id=product_id).stock
@@ -93,31 +86,27 @@ class OrderSerializer(serializers.ModelSerializer):
                 return False
 
             else:
-                  return True
+                return True
 
-
-    def update_stock(self,data):
+    def update_stock(self, data):
         list_to_items = data['details']
-        #Valido si hay items (lista Vacia)
         for item in list_to_items:
             product_id = item['product'].id
             stock_actual = Product.objects.get(id=product_id).stock
             nuevo_stock = stock_actual - item['cuantity']
-            Product.objects.filter(id = product_id).update(stock=nuevo_stock)
-
+            Product.objects.filter(id=product_id).update(stock=nuevo_stock)
         return None
 
     def rebuild_stock(self, data):
         list_to_items = data['details']
-        #Valido si hay items (lista Vacia)
         for item in list_to_items:
             product_id = item['product'].id
             stock_actual = Product.objects.get(id=product_id).stock
-            order_item = OrderDetail.objects.get(order_id=data['id'], product_id=product_id)
-            rebuild_stock = order_item.cuantity + stock_actual
-            nuevo_stock = rebuild_stock - item['cuantity']
-            Product.objects.filter(id=product_id).update(stock=nuevo_stock)
-            print('El nuevo stock PUT es:', nuevo_stock)
+            order_item = OrderDetail.objects.filter(order_id=data['id'], product_id=product_id).first()
+            if order_item is not None:
+                rebuild_stock = order_item.cuantity + stock_actual
+                nuevo_stock = rebuild_stock - item['cuantity']
+                Product.objects.filter(id=product_id).update(stock=nuevo_stock)
         return None
 
 

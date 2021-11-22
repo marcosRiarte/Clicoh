@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-#from rest_framework.routers import DefaultRouter
 from rest_framework.routers import SimpleRouter
 from ecommerce.views import ProductViewSet, OrderViewSet, OrderDetailViewSet
 from rest_framework_simplejwt import views as jwt_views
@@ -24,8 +23,7 @@ from rest_framework_simplejwt import views as jwt_views
 router = SimpleRouter()
 router.register(r'product', ProductViewSet)
 router.register(r'order', OrderViewSet, basename='Order')
-#router.register(r'orderDetail', OrderDetailViewSet)
-#router.register(r'order/', MyModelView, basename='MyModel')
+
 urlpatterns = router.urls
 
 

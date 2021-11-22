@@ -1,6 +1,6 @@
 import json
 from collections import namedtuple
-from django.contrib.sites import requests
+import requests
 from iteration_utilities import duplicates
 
 
@@ -14,13 +14,14 @@ def get_usd():
     return dolar_blue['casa']['venta']
 
 
-"""Contraola que no se repitan los productos"""
+"""Controla que no se repitan los productos, devuelve true si se repiten o no hay items"""
 
 
 def item_repeated(data):
     list_to_items = data['details']
-    #Valido si hay items (lista Vacia)
-    #creo lista de product_id
+    if len(list_to_items) == 0:
+        return True
+
     product_id_list = []
     for item in list_to_items:
         product_id_list.append(item['product'])
@@ -31,13 +32,12 @@ def item_repeated(data):
         return True
 
 
-
-"""Controla que la cantidad de todos los productos de la orden sea mayor a cero"""
+"""Controla que la cantidad de todos los productos de la orden sea mayor a cero
+   Devuelve true si hay cantidades validas  """
 
 
 def amount_non_zero(data):
     list_to_items = data['details']
-    #Valido si hay items (lista Vacia)
     for item in list_to_items:
         if item['cuantity'] <= 0:
             return False
@@ -45,23 +45,11 @@ def amount_non_zero(data):
             return True
 
 
-"""Obtiene el precio de los productos"""
-
-
-def get_product_price(queryset, id_product):
-    for i in queryset:
-        id_set = i.id
-        if id_set == id_product:
-            return i.price
-    return print('No existe el producto')
-
-
 """Calcula el monto total de la orden en pesos"""
 
 
 def get_total(queryset, data):
     list_to_json = data['details']
-    #Valido si hay items (lista Vacia)
     total = 0
     for item in list_to_json:
         id_product = item['product']
@@ -79,6 +67,19 @@ def get_total_usd(total_price):
     order_amount_total = total_price * dolar_price
     return order_amount_total
 
+
+"""Obtiene el precio de un producto"""
+
+
+def get_product_price(queryset, id_product):
+    for product in queryset:
+        id_set = product.id
+        if id_set == id_product:
+            return product.price
+    return print('No existe el producto')
+
+
+################Funciones adicionales No requeridas ########################
 
 """Devuelve la lista de items de la orden"""
 
@@ -105,6 +106,8 @@ def get_order_date_time(self, response):
     body_test = namedtuple("body", dictionary.keys())(*dictionary.values())
     order_date_time = body_test.date_time
     return order_date_time
+
+
 
 
 
