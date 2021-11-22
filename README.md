@@ -1,11 +1,10 @@
-Exponemos los siguientes endpoints en las siguientes direcciones
-Producto:
+Exponemos los siguientes endpoints en las siguientes direcciones </br>
+Producto:</br>
 
-Registrar:Crea un producto nuevo
-Hacer un POST a https:/heroku algo/
+Registrar:Crea un producto nuevo</br>
+Hacer un POST a https://marcosriarte.pythonanywhere.com/product/</br>
 
-
-Json de ejemplo:
+Json de ejemplo:</br>
 {
 "id":"1234",
 "name": "Pizza de cebolla",
@@ -15,7 +14,7 @@ Json de ejemplo:
 
 
 Editar un producto
-Hacer un UPDATE/PUT a https://product/{product_id}/
+Hacer un PUT a https://marcosriarte.pythonanywhere.com/product/{product_id}/
 simpre debe tener el mismo id y se envia el Json completo(o sea valores en todos sus campos).
 Json de ejemplo:
 {
@@ -26,18 +25,17 @@ Json de ejemplo:
 }
 
 Eliminar un producto: Borrara el producto de la id proporcionada
-Hacer un DELETE a https://{product_id}/
+Hacer un DELETE a https://marcosriarte.pythonanywhere.com/product/{product_id}/
 
 Consultar un producto
-Hacer un GET a https:// product/{prodcut_id}/
+Hacer un GET a https://marcosriarte.pythonanywhere.com/product/{prodcut_id}
 
 Listar todos los productos
-Hacer un GET a https://product
+Hacer un GET a  https://marcosriarte.pythonanywhere.com/product/
 
 *Modificar stock de un producto
-Hacer un PATCH a https:// product/{IdProducto}/
+Hacer un PATCH a https://marcosriarte.pythonanywhere.com/product/{IdProducto}/
 simpre debe tener el mismo id { "id": "1234","stock": 21 }
-
 
 
 Tokens: Para obtener el token debemos ingresar nuestro usuario y contraseña. Por defectos vamos a crear un user administrador que sera
