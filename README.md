@@ -2,7 +2,7 @@ Exponemos los siguientes endpoints en las siguientes direcciones </br>
 Producto:</br>
 
 Registrar:Crea un producto nuevo</br>
-Hacer un POST a https://marcosriarte.pythonanywhere.com/product/</br>
+Hacer un POST a https://clicoh-ecomerce.herokuapp.com/product/</br>
 
 Json de ejemplo:</br>
 {
@@ -14,7 +14,7 @@ Json de ejemplo:</br>
 
 
 Editar un producto
-Hacer un PUT a https://marcosriarte.pythonanywhere.com/product/{product_id}/
+Hacer un PUT a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/
 simpre debe tener el mismo id y se envia el Json completo(o sea valores en todos sus campos).
 Json de ejemplo:
 {
@@ -25,16 +25,16 @@ Json de ejemplo:
 }
 
 Eliminar un producto: Borrara el producto de la id proporcionada
-Hacer un DELETE a https://marcosriarte.pythonanywhere.com/product/{product_id}/
+Hacer un DELETE a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/
 
 Consultar un producto
-Hacer un GET a https://marcosriarte.pythonanywhere.com/product/{prodcut_id}
+Hacer un GET a https://clicoh-ecomerce.herokuapp.com/product/{prodcut_id}/
 
 Listar todos los productos
-Hacer un GET a  https://marcosriarte.pythonanywhere.com/product/
+Hacer un GET a  https://clicoh-ecomerce.herokuapp.com/product/
 
 *Modificar stock de un producto
-Hacer un PATCH a https://marcosriarte.pythonanywhere.com/product/{IdProducto}/
+Hacer un PATCH a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/
 simpre debe tener el mismo id { "id": "1234","stock": 21 }
 
 
@@ -62,7 +62,7 @@ y nos devolvera el token de "refresh" y el token de "access"; para autenticarnos
 }
 
 para mas intrucciones podemos ver este link https://coffeebytes.dev/django-rest-framework-y-jwt-para-autenticar-usuarios/
-Este token dbemos enviarlo en toda nuestra peticiones para las ordenes de compra en formtao Bearer Token.Los tokens tienen distintas duracion
+Este token debemos enviarlo en todas nuestras peticiones para las ordenes de compra en formtao Bearer Token.Los tokens tienen distintas duracion 5 minutos o 24 hs
 Ordenes:
 
 
@@ -72,13 +72,15 @@ JSON de ejemplo:
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3MzA3NzMzLCJqdGkiOiIxMDE1OGZjNDcwZTQ0MjZkOGM4MGFiZjFkZjc2OTBkOCIsInVzZXJfaWQiOjF9.p4mxK71L2jbWG2vA1-W3nzbwnlD0GehcTqynca33Q9
 
 {
-"id": "70", "details": [ { "cuantity": 3, "product": "1234" }, { "cuantity": 1, "product": "45" } ] } y la enviamos a POST http://127.0.0.1:8000/order/ ; el sistema guardar la fecha de crecion y/actulizacion en la base de datos automaticamente. Nos devolvera como resultado el json con el monto total de la factura junto con su precio en dolares actualizado.
+"id": "70", "details": [ { "cuantity": 3, "product": "1234" }, { "cuantity": 1, "product": "45" } ] } y la enviamos a POST https://clicoh-ecomerce.herokuapp.com/order/ ; el sistema guardar la fecha de crecion y/actulizacion en la base de datos automaticamente. Nos devolvera como resultado el json con el monto total de la factura junto con su precio en dolares actualizado.
 
 Editar una orden (inclusive sus detalles). Debe actualizar el stock del producto
+PUT https://clicoh-ecomerce.herokuapp.com/order/
 Enviamos una solicitud
 Eliminar una orden. Restaura stock del producto
+DELETE POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}
 Consultar una orden y sus detalles
-Enviar el token en un GET http://127.0.0.1:8000/order/{Id_order}/
+Enviar el token en un GET POST https://clicoh-ecomerce.herokuapp.com/order
 Listar todas las ordenes
-Enviamos un GET http://127.0.0.1:8000/order y nos devolveran todas las ordenes disponibles ya creadas, con su total en presos y dolares.
+Enviamos un GET https://clicoh-ecomerce.herokuapp.com/order//order y nos devolveran todas las ordenes disponibles ya creadas, con su total en presos y dolares.
 
