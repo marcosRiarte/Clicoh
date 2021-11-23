@@ -1,0 +1,618 @@
+{
+	"info": {
+		"_postman_id": "8c57df1b-25e9-4540-980e-9e99c4fc2386",
+		"name": "ClickOh",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Crear producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"678\",\n    \"name\": \"Teclado genius\",\n    \"price\": \"1799.99\",\n    \"stock\": 270\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/product/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								""
+							]
+						},
+						"description": "Crea un producto, si ya existe de be devolver error\n"
+					},
+					"response": []
+				},
+				{
+					"name": "List All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/product",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product"
+							]
+						},
+						"description": "Devuevle una lista con todos los productos creados\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": \"1234\",\n        \"name\": \"Pizza de cebollas,morron y papas\",\n        \"price\": \"799.99\",\n        \"stock\": 500\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/product/1234/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"1234",
+								""
+							]
+						},
+						"description": "Se realizar un PUT, el cual presisa el esquema de \ntodo el esquema Json producto "
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/product/678/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"678",
+								""
+							]
+						},
+						"description": "Borra el producto de la \"id\" pasada por el path"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener un producto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/product/1234",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"1234"
+							]
+						},
+						"description": "En base al \"id\" se traen los datos de ese producto"
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar stock de un producto",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"id\": \"1234\", \"stock\": 700 }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/product/1234/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"1234",
+								""
+							]
+						},
+						"description": "envia un patch y actualiza el stock de un product;debe tener simpre el \"id\" del producto"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Crear orden de compra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NjY0NDM4LCJqdGkiOiI5YmM4OTJkNDliNWM0NTk3YTJlNjA2M2MwMWY0OGFhOCIsInVzZXJfaWQiOjF9.b5R2pL5lGyeQTdvV2OPMy0uwQ3AQba4aMm3oQA-Y460",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{      \n        \"id\": \"111\",\n        \"details\": [\n            {\n                \"cuantity\": 20,\n                \"product\": \"1234\"\n            },\n            {\n                \"cuantity\": 10,\n                \"product\": \"45\"\n            }\n             ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								""
+							]
+						},
+						"description": "Envia los datos de la orden de compra, junto con el toke y devuelve el total de la factura y el precion en dolares actualizado al dia de la fecha"
+					},
+					"response": []
+				},
+				{
+					"name": "List all Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NjY2MzA5LCJqdGkiOiJkNDU5NWYxMmU4MzQ0YTFlYTIyOThkMjJhZjM1N2FmOCIsInVzZXJfaWQiOjF9.hFMMRwJTjBMDcV1ar8rbobiaa8ku4nbPnCxphHLvI1E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								""
+							]
+						},
+						"description": "Lista todas las ordenes de compra y sus detalles"
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta una orden y sus detalles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NjY0NDM4LCJqdGkiOiI5YmM4OTJkNDliNWM0NTk3YTJlNjA2M2MwMWY0OGFhOCIsInVzZXJfaWQiOjF9.b5R2pL5lGyeQTdvV2OPMy0uwQ3AQba4aMm3oQA-Y460",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/111/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								"111",
+								""
+							]
+						},
+						"description": "Consusltamos una orden y sus detalles , usando el \"Id\" de la ordern en el path (en est acaso 70)"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar una orden y sus detalles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NjY0ODU1LCJqdGkiOiI3NDJjYWUxMGMwOWU0Nzc5YjU5NGZkYWNiMDA2MmE4ZiIsInVzZXJfaWQiOjF9.XE1XJcwnsjavvB3iL5B7otac-td8fWhGE-xO_6XCBYQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{      \n        \"id\": \"111\",\n        \"details\": [\n            {\n                \"cuantity\": 18,\n                \"product\": \"1234\"\n            },\n            {\n                \"cuantity\": 11,\n                \"product\": \"45\"\n            }\n             ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/111/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								"111",
+								""
+							]
+						},
+						"description": "Esita una orden en base a su \"id\", en este caso usamos id=70; la orden deben exitir y todos sus campos;"
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Orden de compras",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NjY0ODU1LCJqdGkiOiI3NDJjYWUxMGMwOWU0Nzc5YjU5NGZkYWNiMDA2MmE4ZiIsInVzZXJfaWQiOjF9.XE1XJcwnsjavvB3iL5B7otac-td8fWhGE-xO_6XCBYQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/111/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								"111",
+								""
+							]
+						},
+						"description": "Borra la orden de compra con el \"id\" pasado por parametro. "
+					},
+					"response": []
+				},
+				{
+					"name": "Editar un orden y sus detalles agregando un item nuevo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NjY1NTc5LCJqdGkiOiJmMTE2ODI3MzlmYmM0MTE2OTkxYzVhZjNiMTgyNmM3YiIsInVzZXJfaWQiOjF9.92pDZlptxwFGxDegRCMkdv-4J9QYb21BDubJP5r0v-8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{      \n        \"id\": \"100\",\n        \"details\": [\n            {\n                \"cuantity\": 13,\n                \"product\": \"1234\"\n            },\n            {\n                \"cuantity\": 11,\n                \"product\": \"45\"\n            },\n            {\n                \"cuantity\": 7,\n                \"product\": \"789\"\n            }\n             ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/100/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								"100",
+								""
+							]
+						},
+						"description": "Agreg un item nuevo a la lista de detalles de la orden."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear orden de compra con catidad de un item 0",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{      \n        \"id\": \"130\",\n        \"details\": [\n            {\n                \"cuantity\": 0,\n                \"product\": \"1234\"\n            },\n            {\n                \"cuantity\": 11,\n                \"product\": \"45\"\n            },\n            {\n                \"cuantity\": 7,\n                \"product\": \"789\"\n            }\n             ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear orden de compra  producto repetido",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{      \n        \"id\": \"70\",\n        \"details\": [\n            {\n                \"cuantity\": 3,\n                \"product\": \"1234\"\n            },\n            {\n                \"cuantity\": 1,\n                \"product\": \"1234\"\n            }\n             ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								""
+							]
+						},
+						"description": "Crea una orden de compra con un producto repetido; la orden debe ser rechazada por el sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear orden de compras con lista de detalles vacia",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"456\",\n    \"details\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								""
+							]
+						},
+						"description": "Solo se envia el \"id\", sin ningun item. Devuevle orden de compra invalida"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear orden de compra con stock insuficiente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NjY1OTY4LCJqdGkiOiJhZjgyZTE3M2Q4ZTg0MGM0YTI3Mjg4ZTQ0OTIxYWFkOCIsInVzZXJfaWQiOjF9.8DI2hUj-vih2jaVwaZaXJvafDo8CIY6f_NKP9hPgDaU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{      \n        \"id\": \"70\",\n        \"details\": [\n            {\n                \"cuantity\": 300,\n                \"product\": \"789\"\n            },\n            {\n                \"cuantity\": 1,\n                \"product\": \"45\"\n            }\n             ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/order/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								""
+							]
+						},
+						"description": "Crea una orden de compra la cual no tiene el suficiente stock algun item.Devuelve error \" Orden de compra invalida\"."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "Get token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clicoh-ecomerce.herokuapp.com/api/token/",
+							"protocol": "https",
+							"host": [
+								"clicoh-ecomerce",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						},
+						"description": "Obtenemos el token enviando en json con user\"admin\",contraseña \"admin\""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
