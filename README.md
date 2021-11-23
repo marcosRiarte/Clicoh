@@ -1,3 +1,9 @@
+***Clicoh ecommerce*</br>
+-Django 3.2.0</br>
+-gunicorn</br>
+.Python 3.6 o superior</br>
+-Heroku</br>
+</br>
 Exponemos los siguientes endpoints en las siguientes direcciones </br>
 Producto:</br>
 
@@ -5,38 +11,38 @@ Registrar:Crea un producto nuevo</br>
 Hacer un POST a https://clicoh-ecomerce.herokuapp.com/product/</br>
 
 Json de ejemplo:</br>
-{
-"id":"1234",
-"name": "Pizza de cebolla",
-"price": "799.99",
-"stock": 34
-}
+{</br>
+"id":"1234",</br>
+"name": "Pizza de cebolla",</br>
+"price": "799.99",</br>
+"stock": 34</br>
+}</br>
 
+</br></br>
+Editar un producto</br>
+Hacer un PUT a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/</br>
+simpre debe tener el mismo id y se envia el Json completo(o sea valores en todos sus campos).</br>
+Json de ejemplo:</br>
+{</br>
+"id": "1234",</br>
+"name": "Pizza de cebollas,morron y papas",</br>
+"price": "899.99",</br>
+"stock": 60</br>
+}</br>
 
-Editar un producto
-Hacer un PUT a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/
-simpre debe tener el mismo id y se envia el Json completo(o sea valores en todos sus campos).
-Json de ejemplo:
-{
-"id": "1234",
-"name": "Pizza de cebollas,morron y papas",
-"price": "899.99",
-"stock": 60
-}
-
-Eliminar un producto: Borrara el producto de la id proporcionada
-Hacer un DELETE a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/
-
-Consultar un producto
-Hacer un GET a https://clicoh-ecomerce.herokuapp.com/product/{prodcut_id}/
-
-Listar todos los productos
-Hacer un GET a  https://clicoh-ecomerce.herokuapp.com/product/
-
-*Modificar stock de un producto
-Hacer un PATCH a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/
-simpre debe tener el mismo id { "id": "1234","stock": 21 }
-
+-Eliminar un producto: Borrara el producto de la id proporcionada</br>
+Hacer un DELETE a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/</br>
+</br></br>
+-Consultar un producto</br>
+Hacer un GET a https://clicoh-ecomerce.herokuapp.com/product/{prodcut_id}/</br>
+</br></br>
+-Listar todos los productos</br>
+Hacer un GET a  https://clicoh-ecomerce.herokuapp.com/product/</br>
+</br></br>
+-Modificar stock de un producto</br>
+Hacer un PATCH a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/</br>
+simpre debe tener el mismo id { "id": "1234","stock": 21 }</br>
+</br></br>
 
 Tokens: Para obtener el token debemos ingresar nuestro usuario y contraseña. Por defectos vamos a crear un user administrador que sera
 user: admin
