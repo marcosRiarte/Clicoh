@@ -82,14 +82,18 @@ Authorization: Bearer</br> eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBl
 "id": "70", "details": [ { "cuantity": 3, "product": "1234" }, { "cuantity": 1, "product": "45" } ] } y la enviamos a POST https://clicoh-ecomerce.herokuapp.com/order/ ; el sistema guardar la fecha de crecion y/actulizacion en la base de datos automaticamente. Nos devolvera como resultado el json con el monto total de la factura junto con su precio en dolares actualizado.</br>
 </br>
 Editar una orden (inclusive sus detalles). Debe actualizar el stock del producto</br>
+Authorization: Bearer + {Token access}</br>
 PUT https://clicoh-ecomerce.herokuapp.com/order/</br></br>
-Enviamos una solicitud</br>
+
 Eliminar una orden. Restaura stock del producto</br>
+Authorization: Bearer + {Token access}</br>
 DELETE POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}</br>
 </br></br>
 Consultar una orden y sus detalles</br>
+Authorization: Bearer + {Token access}</br>
 Enviar el token en un GET POST https://clicoh-ecomerce.herokuapp.com/order</br>
 </br></br>
 Listar todas las ordenes</br>
+Authorization: Bearer + {Token access}</br>
 Enviamos un GET https://clicoh-ecomerce.herokuapp.com/order//order y nos devolveran todas las ordenes disponibles ya creadas, con su total en presos y dolares.</br>
 
