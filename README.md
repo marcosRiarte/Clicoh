@@ -41,7 +41,8 @@ Hacer un GET a  https://clicoh-ecomerce.herokuapp.com/product/</br>
 </br></br>
 -Modificar stock de un producto</br>
 Hacer un PATCH a https://clicoh-ecomerce.herokuapp.com/product/{product_id}/</br>
-simpre debe tener el mismo id { "id": "1234","stock": 21 }</br>
+simpre debe tener el mismo id</br>
+{ "id": "1234","stock": 21 }</br>
 </br></br>
 
 Tokens: Para obtener el token debemos ingresar nuestro usuario y contraseña. Por defectos vamos a crear un user administrador que sera</br>
