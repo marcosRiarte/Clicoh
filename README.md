@@ -88,9 +88,10 @@ Authorization: Bearer + {Token access}</br>
 PUT https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br></br>
 {</br>
 "id": "70", "details": [ { "cuantity": 3, "product": "1234" }, { "cuantity": 13, "product": "45" } ] } </br>
+ </br> </br>
 Eliminar una orden. Restaura stock del producto</br>
 Authorization: Bearer + {Token access}</br>
-DELETE POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br>
+DELETE  https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br>
 </br></br>
 Consultar una orden y sus detalles</br>
 Authorization: Bearer + {Token access}</br>
