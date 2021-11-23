@@ -80,21 +80,23 @@ JSON de ejemplo:</br>
 Authorization: Bearer</br> eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3MzA3NzMzLCJqdGkiOiIxMDE1OGZjNDcwZTQ0MjZkOGM4MGFiZjFkZjc2OTBkOCIsInVzZXJfaWQiOjF9.p4mxK71L2jbWG2vA1-W3nzbwnlD0GehcTqynca33Q9</br>
 
 {</br>
-"id": "70", "details": [ { "cuantity": 3, "product": "1234" }, { "cuantity": 1, "product": "45" } ] } y la enviamos a POST https://clicoh-ecomerce.herokuapp.com/order/ ; el sistema guardar la fecha de crecion y/actulizacion en la base de datos automaticamente. Nos devolvera como resultado el json con el monto total de la factura junto con su precio en dolares actualizado.</br>
+"id": "70", "details": [ { "cuantity": 3, "product": "1234" }, { "cuantity": 1, "product": "45" } ] }</br> 
+y la enviamos a POST https://clicoh-ecomerce.herokuapp.com/order/ ; el sistema guardar la fecha de crecion y/actulizacion en la base de datos automaticamente. Nos devolvera como resultado el json con el monto total de la factura junto con su precio en dolares actualizado.</br>
 </br>
 Editar una orden (inclusive sus detalles). Debe actualizar el stock del producto</br>
 Authorization: Bearer + {Token access}</br>
-PUT https://clicoh-ecomerce.herokuapp.com/order/</br></br>
-
+PUT https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br></br>
+{</br>
+"id": "70", "details": [ { "cuantity": 3, "product": "1234" }, { "cuantity": 13, "product": "45" } ] } </br>
 Eliminar una orden. Restaura stock del producto</br>
 Authorization: Bearer + {Token access}</br>
-DELETE POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}</br>
+DELETE POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br>
 </br></br>
 Consultar una orden y sus detalles</br>
 Authorization: Bearer + {Token access}</br>
-Enviar el token en un GET POST https://clicoh-ecomerce.herokuapp.com/order</br>
+Enviar el token en un GET POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br>
 </br></br>
 Listar todas las ordenes</br>
 Authorization: Bearer + {Token access}</br>
-Enviamos un GET https://clicoh-ecomerce.herokuapp.com/order//order y nos devolveran todas las ordenes disponibles ya creadas, con su total en presos y dolares.</br>
+Enviamos un GET https://clicoh-ecomerce.herokuapp.com/order/ y nos devolveran todas las ordenes disponibles ya creadas, con su total en presos y dolares.</br>
 
