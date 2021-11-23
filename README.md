@@ -69,7 +69,7 @@ y nos devolvera el token de "refresh" y el token de "access"; para autenticarnos
 }</br>
 </br>
 para mas intrucciones podemos ver este link https://coffeebytes.dev/django-rest-framework-y-jwt-para-autenticar-usuarios/</br>
-Este token debemos enviarlo en todas nuestras peticiones para las ordenes de compra en formtao Bearer Token.Los tokens tienen distintas duracion 5 minutos o 24 hs
+Este token debemos enviarlo en todas nuestras peticiones para las ordenes de compra en formtao Bearer Token. Los tokens tienen distintas duracion 5 minutos o 24 hs
 </br></br>
 -Ordenes:</br></br>
 
