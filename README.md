@@ -94,7 +94,7 @@ DELETE POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br>
 </br></br>
 Consultar una orden y sus detalles</br>
 Authorization: Bearer + {Token access}</br>
-Enviar el token en un GET POST https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br>
+Enviar el token en un GET  https://clicoh-ecomerce.herokuapp.com/order/{order_id}/</br>
 </br></br>
 Listar todas las ordenes</br>
 Authorization: Bearer + {Token access}</br>
